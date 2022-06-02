@@ -1,0 +1,1915 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserGet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="userid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserGetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserGetResult" type="tns:MyUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MyUser">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="UserId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="FName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserPhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserEmail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserPass" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RoleId" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UserAdd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="u" type="tns:MyUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserAddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserAddResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="u" type="tns:MyUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserUpdateResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserDelete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="u" type="tns:MyUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserDeleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserDeleteResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserList">
+        <s:complexType />
+      </s:element>
+      <s:element name="UserListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserListResult" type="tns:ArrayOfMyUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMyUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MyUser" nillable="true" type="tns:MyUser" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UserStudentList">
+        <s:complexType />
+      </s:element>
+      <s:element name="UserStudentListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserStudentListResult" type="tns:ArrayOfMyUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userEmail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pass" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginResult" type="tns:MyUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupGet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="groupid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupGetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GroupGetResult" type="tns:Group" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Group">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="GroupId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="GroupName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MasterG" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="GroupColor" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GroupAdd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="g" type="tns:Group" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupAddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GroupAddResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="g" type="tns:Group" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GroupUpdateResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupDelete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="g" type="tns:Group" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupDeleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GroupDeleteResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GroupListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GroupListResult" type="tns:ArrayOfGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGroup">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Group" nillable="true" type="tns:Group" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GroupListOfUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="u" type="tns:MyUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupListOfUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GroupListOfUserResult" type="tns:ArrayOfGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupListOnlyOfUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="u" type="tns:MyUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupListOnlyOfUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GroupListOnlyOfUserResult" type="tns:ArrayOfGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupOfEvent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ev" type="tns:MyEvent" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MyEvent">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="EventId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EventDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GroupId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserId" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GroupOfEventResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GroupOfEventResult" type="tns:Group" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupChildOfGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="g" type="tns:Group" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupChildOfGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GroupChildOfGroupResult" type="tns:ArrayOfGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MasterGroupList">
+        <s:complexType />
+      </s:element>
+      <s:element name="MasterGroupListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MasterGroupListResult" type="tns:ArrayOfGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupChildOfGroupList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="gL" type="tns:ArrayOfGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupChildOfGroupListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GroupChildOfGroupListResult" type="tns:ArrayOfGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MasterGroupListOfUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="u" type="tns:MyUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MasterGroupListOfUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MasterGroupListOfUserResult" type="tns:ArrayOfGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserGroupGet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="usergroupid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserGroupGetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserGroupGetResult" type="tns:UserGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UserGroup">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="UserGroupId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="GroupId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Group" type="tns:Group" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserId" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UserGroupAdd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ug" type="tns:UserGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserGroupAddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserGroupAddResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserGroupUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ug" type="tns:UserGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserGroupUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserGroupUpdateResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserGroupDelete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ug" type="tns:UserGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserGroupDeleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserGroupDeleteResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserGroupList">
+        <s:complexType />
+      </s:element>
+      <s:element name="UserGroupListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserGroupListResult" type="tns:ArrayOfUserGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUserGroup">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UserGroup" nillable="true" type="tns:UserGroup" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UserGroupListOfUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="u" type="tns:MyUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserGroupListOfUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserGroupListOfUserResult" type="tns:ArrayOfUserGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RoleGet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="roleid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RoleGetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RoleGetResult" type="tns:Role" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Role">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="RoleId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="RoleName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RoleAdd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="r" type="tns:Role" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RoleAddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RoleAddResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RoleUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="r" type="tns:Role" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RoleUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RoleUpdateResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RoleDelete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="r" type="tns:Role" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RoleDeleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RoleDeleteResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RoleList">
+        <s:complexType />
+      </s:element>
+      <s:element name="RoleListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RoleListResult" type="tns:ArrayOfRole" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRole">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Role" nillable="true" type="tns:Role" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RoleListNoAdmin">
+        <s:complexType />
+      </s:element>
+      <s:element name="RoleListNoAdminResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RoleListNoAdminResult" type="tns:ArrayOfRole" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EventGet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eventid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EventGetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EventGetResult" type="tns:MyEvent" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EventAdd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="e" type="tns:MyEvent" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EventAddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EventAddResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EventUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="e" type="tns:MyEvent" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EventUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EventUpdateResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EventDelete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="e" type="tns:MyEvent" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EventDeleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EventDeleteResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EventList">
+        <s:complexType />
+      </s:element>
+      <s:element name="EventListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EventListResult" type="tns:ArrayOfMyEvent" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMyEvent">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MyEvent" nillable="true" type="tns:MyEvent" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="EventListOfGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="g" type="tns:Group" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EventListOfGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EventListOfGroupResult" type="tns:ArrayOfMyEvent" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EventListOfGroupOnly">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="g" type="tns:Group" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EventListOfGroupOnlyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EventListOfGroupOnlyResult" type="tns:ArrayOfMyEvent" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EventListOfUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="u" type="tns:MyUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EventListOfUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EventListOfUserResult" type="tns:ArrayOfMyEvent" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EventListOfWeek">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EventListOfWeekResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EventListOfWeekResult" type="tns:ArrayOfMyEvent" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EventListOfGroupByDates">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="g" type="tns:Group" />
+            <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EventListOfGroupByDatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EventListOfGroupByDatesResult" type="tns:ArrayOfMyEvent" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EventListOfGroupsByDates">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="groupIdlst" type="tns:ArrayOfInt" />
+            <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="EventListOfGroupsByDatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EventListOfGroupsByDatesResult" type="tns:ArrayOfMyEvent" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EventListOfUserByDates">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="u" type="tns:MyUser" />
+            <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EventListOfUserByDatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EventListOfUserByDatesResult" type="tns:ArrayOfMyEvent" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserGetSoapIn">
+    <wsdl:part name="parameters" element="tns:UserGet" />
+  </wsdl:message>
+  <wsdl:message name="UserGetSoapOut">
+    <wsdl:part name="parameters" element="tns:UserGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserAddSoapIn">
+    <wsdl:part name="parameters" element="tns:UserAdd" />
+  </wsdl:message>
+  <wsdl:message name="UserAddSoapOut">
+    <wsdl:part name="parameters" element="tns:UserAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:UserUpdate" />
+  </wsdl:message>
+  <wsdl:message name="UserUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:UserUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserDeleteSoapIn">
+    <wsdl:part name="parameters" element="tns:UserDelete" />
+  </wsdl:message>
+  <wsdl:message name="UserDeleteSoapOut">
+    <wsdl:part name="parameters" element="tns:UserDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserListSoapIn">
+    <wsdl:part name="parameters" element="tns:UserList" />
+  </wsdl:message>
+  <wsdl:message name="UserListSoapOut">
+    <wsdl:part name="parameters" element="tns:UserListResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserStudentListSoapIn">
+    <wsdl:part name="parameters" element="tns:UserStudentList" />
+  </wsdl:message>
+  <wsdl:message name="UserStudentListSoapOut">
+    <wsdl:part name="parameters" element="tns:UserStudentListResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupGetSoapIn">
+    <wsdl:part name="parameters" element="tns:GroupGet" />
+  </wsdl:message>
+  <wsdl:message name="GroupGetSoapOut">
+    <wsdl:part name="parameters" element="tns:GroupGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupAddSoapIn">
+    <wsdl:part name="parameters" element="tns:GroupAdd" />
+  </wsdl:message>
+  <wsdl:message name="GroupAddSoapOut">
+    <wsdl:part name="parameters" element="tns:GroupAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:GroupUpdate" />
+  </wsdl:message>
+  <wsdl:message name="GroupUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:GroupUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupDeleteSoapIn">
+    <wsdl:part name="parameters" element="tns:GroupDelete" />
+  </wsdl:message>
+  <wsdl:message name="GroupDeleteSoapOut">
+    <wsdl:part name="parameters" element="tns:GroupDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupListSoapIn">
+    <wsdl:part name="parameters" element="tns:GroupList" />
+  </wsdl:message>
+  <wsdl:message name="GroupListSoapOut">
+    <wsdl:part name="parameters" element="tns:GroupListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupListOfUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GroupListOfUser" />
+  </wsdl:message>
+  <wsdl:message name="GroupListOfUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GroupListOfUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupListOnlyOfUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GroupListOnlyOfUser" />
+  </wsdl:message>
+  <wsdl:message name="GroupListOnlyOfUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GroupListOnlyOfUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupOfEventSoapIn">
+    <wsdl:part name="parameters" element="tns:GroupOfEvent" />
+  </wsdl:message>
+  <wsdl:message name="GroupOfEventSoapOut">
+    <wsdl:part name="parameters" element="tns:GroupOfEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupChildOfGroupSoapIn">
+    <wsdl:part name="parameters" element="tns:GroupChildOfGroup" />
+  </wsdl:message>
+  <wsdl:message name="GroupChildOfGroupSoapOut">
+    <wsdl:part name="parameters" element="tns:GroupChildOfGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="MasterGroupListSoapIn">
+    <wsdl:part name="parameters" element="tns:MasterGroupList" />
+  </wsdl:message>
+  <wsdl:message name="MasterGroupListSoapOut">
+    <wsdl:part name="parameters" element="tns:MasterGroupListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupChildOfGroupListSoapIn">
+    <wsdl:part name="parameters" element="tns:GroupChildOfGroupList" />
+  </wsdl:message>
+  <wsdl:message name="GroupChildOfGroupListSoapOut">
+    <wsdl:part name="parameters" element="tns:GroupChildOfGroupListResponse" />
+  </wsdl:message>
+  <wsdl:message name="MasterGroupListOfUserSoapIn">
+    <wsdl:part name="parameters" element="tns:MasterGroupListOfUser" />
+  </wsdl:message>
+  <wsdl:message name="MasterGroupListOfUserSoapOut">
+    <wsdl:part name="parameters" element="tns:MasterGroupListOfUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserGroupGetSoapIn">
+    <wsdl:part name="parameters" element="tns:UserGroupGet" />
+  </wsdl:message>
+  <wsdl:message name="UserGroupGetSoapOut">
+    <wsdl:part name="parameters" element="tns:UserGroupGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserGroupAddSoapIn">
+    <wsdl:part name="parameters" element="tns:UserGroupAdd" />
+  </wsdl:message>
+  <wsdl:message name="UserGroupAddSoapOut">
+    <wsdl:part name="parameters" element="tns:UserGroupAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserGroupUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:UserGroupUpdate" />
+  </wsdl:message>
+  <wsdl:message name="UserGroupUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:UserGroupUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserGroupDeleteSoapIn">
+    <wsdl:part name="parameters" element="tns:UserGroupDelete" />
+  </wsdl:message>
+  <wsdl:message name="UserGroupDeleteSoapOut">
+    <wsdl:part name="parameters" element="tns:UserGroupDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserGroupListSoapIn">
+    <wsdl:part name="parameters" element="tns:UserGroupList" />
+  </wsdl:message>
+  <wsdl:message name="UserGroupListSoapOut">
+    <wsdl:part name="parameters" element="tns:UserGroupListResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserGroupListOfUserSoapIn">
+    <wsdl:part name="parameters" element="tns:UserGroupListOfUser" />
+  </wsdl:message>
+  <wsdl:message name="UserGroupListOfUserSoapOut">
+    <wsdl:part name="parameters" element="tns:UserGroupListOfUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="RoleGetSoapIn">
+    <wsdl:part name="parameters" element="tns:RoleGet" />
+  </wsdl:message>
+  <wsdl:message name="RoleGetSoapOut">
+    <wsdl:part name="parameters" element="tns:RoleGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="RoleAddSoapIn">
+    <wsdl:part name="parameters" element="tns:RoleAdd" />
+  </wsdl:message>
+  <wsdl:message name="RoleAddSoapOut">
+    <wsdl:part name="parameters" element="tns:RoleAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="RoleUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:RoleUpdate" />
+  </wsdl:message>
+  <wsdl:message name="RoleUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:RoleUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="RoleDeleteSoapIn">
+    <wsdl:part name="parameters" element="tns:RoleDelete" />
+  </wsdl:message>
+  <wsdl:message name="RoleDeleteSoapOut">
+    <wsdl:part name="parameters" element="tns:RoleDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="RoleListSoapIn">
+    <wsdl:part name="parameters" element="tns:RoleList" />
+  </wsdl:message>
+  <wsdl:message name="RoleListSoapOut">
+    <wsdl:part name="parameters" element="tns:RoleListResponse" />
+  </wsdl:message>
+  <wsdl:message name="RoleListNoAdminSoapIn">
+    <wsdl:part name="parameters" element="tns:RoleListNoAdmin" />
+  </wsdl:message>
+  <wsdl:message name="RoleListNoAdminSoapOut">
+    <wsdl:part name="parameters" element="tns:RoleListNoAdminResponse" />
+  </wsdl:message>
+  <wsdl:message name="EventGetSoapIn">
+    <wsdl:part name="parameters" element="tns:EventGet" />
+  </wsdl:message>
+  <wsdl:message name="EventGetSoapOut">
+    <wsdl:part name="parameters" element="tns:EventGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="EventAddSoapIn">
+    <wsdl:part name="parameters" element="tns:EventAdd" />
+  </wsdl:message>
+  <wsdl:message name="EventAddSoapOut">
+    <wsdl:part name="parameters" element="tns:EventAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="EventUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:EventUpdate" />
+  </wsdl:message>
+  <wsdl:message name="EventUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:EventUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="EventDeleteSoapIn">
+    <wsdl:part name="parameters" element="tns:EventDelete" />
+  </wsdl:message>
+  <wsdl:message name="EventDeleteSoapOut">
+    <wsdl:part name="parameters" element="tns:EventDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="EventListSoapIn">
+    <wsdl:part name="parameters" element="tns:EventList" />
+  </wsdl:message>
+  <wsdl:message name="EventListSoapOut">
+    <wsdl:part name="parameters" element="tns:EventListResponse" />
+  </wsdl:message>
+  <wsdl:message name="EventListOfGroupSoapIn">
+    <wsdl:part name="parameters" element="tns:EventListOfGroup" />
+  </wsdl:message>
+  <wsdl:message name="EventListOfGroupSoapOut">
+    <wsdl:part name="parameters" element="tns:EventListOfGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="EventListOfGroupOnlySoapIn">
+    <wsdl:part name="parameters" element="tns:EventListOfGroupOnly" />
+  </wsdl:message>
+  <wsdl:message name="EventListOfGroupOnlySoapOut">
+    <wsdl:part name="parameters" element="tns:EventListOfGroupOnlyResponse" />
+  </wsdl:message>
+  <wsdl:message name="EventListOfUserSoapIn">
+    <wsdl:part name="parameters" element="tns:EventListOfUser" />
+  </wsdl:message>
+  <wsdl:message name="EventListOfUserSoapOut">
+    <wsdl:part name="parameters" element="tns:EventListOfUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="EventListOfWeekSoapIn">
+    <wsdl:part name="parameters" element="tns:EventListOfWeek" />
+  </wsdl:message>
+  <wsdl:message name="EventListOfWeekSoapOut">
+    <wsdl:part name="parameters" element="tns:EventListOfWeekResponse" />
+  </wsdl:message>
+  <wsdl:message name="EventListOfGroupByDatesSoapIn">
+    <wsdl:part name="parameters" element="tns:EventListOfGroupByDates" />
+  </wsdl:message>
+  <wsdl:message name="EventListOfGroupByDatesSoapOut">
+    <wsdl:part name="parameters" element="tns:EventListOfGroupByDatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="EventListOfGroupsByDatesSoapIn">
+    <wsdl:part name="parameters" element="tns:EventListOfGroupsByDates" />
+  </wsdl:message>
+  <wsdl:message name="EventListOfGroupsByDatesSoapOut">
+    <wsdl:part name="parameters" element="tns:EventListOfGroupsByDatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="EventListOfUserByDatesSoapIn">
+    <wsdl:part name="parameters" element="tns:EventListOfUserByDates" />
+  </wsdl:message>
+  <wsdl:message name="EventListOfUserByDatesSoapOut">
+    <wsdl:part name="parameters" element="tns:EventListOfUserByDatesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserGet">
+      <wsdl:input message="tns:UserGetSoapIn" />
+      <wsdl:output message="tns:UserGetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserAdd">
+      <wsdl:input message="tns:UserAddSoapIn" />
+      <wsdl:output message="tns:UserAddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserUpdate">
+      <wsdl:input message="tns:UserUpdateSoapIn" />
+      <wsdl:output message="tns:UserUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserDelete">
+      <wsdl:input message="tns:UserDeleteSoapIn" />
+      <wsdl:output message="tns:UserDeleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserList">
+      <wsdl:input message="tns:UserListSoapIn" />
+      <wsdl:output message="tns:UserListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserStudentList">
+      <wsdl:input message="tns:UserStudentListSoapIn" />
+      <wsdl:output message="tns:UserStudentListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GroupGet">
+      <wsdl:input message="tns:GroupGetSoapIn" />
+      <wsdl:output message="tns:GroupGetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GroupAdd">
+      <wsdl:input message="tns:GroupAddSoapIn" />
+      <wsdl:output message="tns:GroupAddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GroupUpdate">
+      <wsdl:input message="tns:GroupUpdateSoapIn" />
+      <wsdl:output message="tns:GroupUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GroupDelete">
+      <wsdl:input message="tns:GroupDeleteSoapIn" />
+      <wsdl:output message="tns:GroupDeleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GroupList">
+      <wsdl:input message="tns:GroupListSoapIn" />
+      <wsdl:output message="tns:GroupListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GroupListOfUser">
+      <wsdl:input message="tns:GroupListOfUserSoapIn" />
+      <wsdl:output message="tns:GroupListOfUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GroupListOnlyOfUser">
+      <wsdl:input message="tns:GroupListOnlyOfUserSoapIn" />
+      <wsdl:output message="tns:GroupListOnlyOfUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GroupOfEvent">
+      <wsdl:input message="tns:GroupOfEventSoapIn" />
+      <wsdl:output message="tns:GroupOfEventSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GroupChildOfGroup">
+      <wsdl:input message="tns:GroupChildOfGroupSoapIn" />
+      <wsdl:output message="tns:GroupChildOfGroupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MasterGroupList">
+      <wsdl:input message="tns:MasterGroupListSoapIn" />
+      <wsdl:output message="tns:MasterGroupListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GroupChildOfGroupList">
+      <wsdl:input message="tns:GroupChildOfGroupListSoapIn" />
+      <wsdl:output message="tns:GroupChildOfGroupListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MasterGroupListOfUser">
+      <wsdl:input message="tns:MasterGroupListOfUserSoapIn" />
+      <wsdl:output message="tns:MasterGroupListOfUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserGroupGet">
+      <wsdl:input message="tns:UserGroupGetSoapIn" />
+      <wsdl:output message="tns:UserGroupGetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserGroupAdd">
+      <wsdl:input message="tns:UserGroupAddSoapIn" />
+      <wsdl:output message="tns:UserGroupAddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserGroupUpdate">
+      <wsdl:input message="tns:UserGroupUpdateSoapIn" />
+      <wsdl:output message="tns:UserGroupUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserGroupDelete">
+      <wsdl:input message="tns:UserGroupDeleteSoapIn" />
+      <wsdl:output message="tns:UserGroupDeleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserGroupList">
+      <wsdl:input message="tns:UserGroupListSoapIn" />
+      <wsdl:output message="tns:UserGroupListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserGroupListOfUser">
+      <wsdl:input message="tns:UserGroupListOfUserSoapIn" />
+      <wsdl:output message="tns:UserGroupListOfUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RoleGet">
+      <wsdl:input message="tns:RoleGetSoapIn" />
+      <wsdl:output message="tns:RoleGetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RoleAdd">
+      <wsdl:input message="tns:RoleAddSoapIn" />
+      <wsdl:output message="tns:RoleAddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RoleUpdate">
+      <wsdl:input message="tns:RoleUpdateSoapIn" />
+      <wsdl:output message="tns:RoleUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RoleDelete">
+      <wsdl:input message="tns:RoleDeleteSoapIn" />
+      <wsdl:output message="tns:RoleDeleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RoleList">
+      <wsdl:input message="tns:RoleListSoapIn" />
+      <wsdl:output message="tns:RoleListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RoleListNoAdmin">
+      <wsdl:input message="tns:RoleListNoAdminSoapIn" />
+      <wsdl:output message="tns:RoleListNoAdminSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EventGet">
+      <wsdl:input message="tns:EventGetSoapIn" />
+      <wsdl:output message="tns:EventGetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EventAdd">
+      <wsdl:input message="tns:EventAddSoapIn" />
+      <wsdl:output message="tns:EventAddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EventUpdate">
+      <wsdl:input message="tns:EventUpdateSoapIn" />
+      <wsdl:output message="tns:EventUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EventDelete">
+      <wsdl:input message="tns:EventDeleteSoapIn" />
+      <wsdl:output message="tns:EventDeleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EventList">
+      <wsdl:input message="tns:EventListSoapIn" />
+      <wsdl:output message="tns:EventListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EventListOfGroup">
+      <wsdl:input message="tns:EventListOfGroupSoapIn" />
+      <wsdl:output message="tns:EventListOfGroupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EventListOfGroupOnly">
+      <wsdl:input message="tns:EventListOfGroupOnlySoapIn" />
+      <wsdl:output message="tns:EventListOfGroupOnlySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EventListOfUser">
+      <wsdl:input message="tns:EventListOfUserSoapIn" />
+      <wsdl:output message="tns:EventListOfUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EventListOfWeek">
+      <wsdl:input message="tns:EventListOfWeekSoapIn" />
+      <wsdl:output message="tns:EventListOfWeekSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EventListOfGroupByDates">
+      <wsdl:input message="tns:EventListOfGroupByDatesSoapIn" />
+      <wsdl:output message="tns:EventListOfGroupByDatesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EventListOfGroupsByDates">
+      <wsdl:input message="tns:EventListOfGroupsByDatesSoapIn" />
+      <wsdl:output message="tns:EventListOfGroupsByDatesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EventListOfUserByDates">
+      <wsdl:input message="tns:EventListOfUserByDatesSoapIn" />
+      <wsdl:output message="tns:EventListOfUserByDatesSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceSoap" type="tns:WebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserGet">
+      <soap:operation soapAction="http://tempuri.org/UserGet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserAdd">
+      <soap:operation soapAction="http://tempuri.org/UserAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserUpdate">
+      <soap:operation soapAction="http://tempuri.org/UserUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserDelete">
+      <soap:operation soapAction="http://tempuri.org/UserDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserList">
+      <soap:operation soapAction="http://tempuri.org/UserList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserStudentList">
+      <soap:operation soapAction="http://tempuri.org/UserStudentList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupGet">
+      <soap:operation soapAction="http://tempuri.org/GroupGet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupAdd">
+      <soap:operation soapAction="http://tempuri.org/GroupAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupUpdate">
+      <soap:operation soapAction="http://tempuri.org/GroupUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupDelete">
+      <soap:operation soapAction="http://tempuri.org/GroupDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupList">
+      <soap:operation soapAction="http://tempuri.org/GroupList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupListOfUser">
+      <soap:operation soapAction="http://tempuri.org/GroupListOfUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupListOnlyOfUser">
+      <soap:operation soapAction="http://tempuri.org/GroupListOnlyOfUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupOfEvent">
+      <soap:operation soapAction="http://tempuri.org/GroupOfEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupChildOfGroup">
+      <soap:operation soapAction="http://tempuri.org/GroupChildOfGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MasterGroupList">
+      <soap:operation soapAction="http://tempuri.org/MasterGroupList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupChildOfGroupList">
+      <soap:operation soapAction="http://tempuri.org/GroupChildOfGroupList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MasterGroupListOfUser">
+      <soap:operation soapAction="http://tempuri.org/MasterGroupListOfUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserGroupGet">
+      <soap:operation soapAction="http://tempuri.org/UserGroupGet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserGroupAdd">
+      <soap:operation soapAction="http://tempuri.org/UserGroupAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserGroupUpdate">
+      <soap:operation soapAction="http://tempuri.org/UserGroupUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserGroupDelete">
+      <soap:operation soapAction="http://tempuri.org/UserGroupDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserGroupList">
+      <soap:operation soapAction="http://tempuri.org/UserGroupList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserGroupListOfUser">
+      <soap:operation soapAction="http://tempuri.org/UserGroupListOfUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RoleGet">
+      <soap:operation soapAction="http://tempuri.org/RoleGet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RoleAdd">
+      <soap:operation soapAction="http://tempuri.org/RoleAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RoleUpdate">
+      <soap:operation soapAction="http://tempuri.org/RoleUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RoleDelete">
+      <soap:operation soapAction="http://tempuri.org/RoleDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RoleList">
+      <soap:operation soapAction="http://tempuri.org/RoleList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RoleListNoAdmin">
+      <soap:operation soapAction="http://tempuri.org/RoleListNoAdmin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EventGet">
+      <soap:operation soapAction="http://tempuri.org/EventGet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EventAdd">
+      <soap:operation soapAction="http://tempuri.org/EventAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EventUpdate">
+      <soap:operation soapAction="http://tempuri.org/EventUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EventDelete">
+      <soap:operation soapAction="http://tempuri.org/EventDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EventList">
+      <soap:operation soapAction="http://tempuri.org/EventList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EventListOfGroup">
+      <soap:operation soapAction="http://tempuri.org/EventListOfGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EventListOfGroupOnly">
+      <soap:operation soapAction="http://tempuri.org/EventListOfGroupOnly" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EventListOfUser">
+      <soap:operation soapAction="http://tempuri.org/EventListOfUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EventListOfWeek">
+      <soap:operation soapAction="http://tempuri.org/EventListOfWeek" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EventListOfGroupByDates">
+      <soap:operation soapAction="http://tempuri.org/EventListOfGroupByDates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EventListOfGroupsByDates">
+      <soap:operation soapAction="http://tempuri.org/EventListOfGroupsByDates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EventListOfUserByDates">
+      <soap:operation soapAction="http://tempuri.org/EventListOfUserByDates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceSoap12" type="tns:WebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserGet">
+      <soap12:operation soapAction="http://tempuri.org/UserGet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserAdd">
+      <soap12:operation soapAction="http://tempuri.org/UserAdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserUpdate">
+      <soap12:operation soapAction="http://tempuri.org/UserUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserDelete">
+      <soap12:operation soapAction="http://tempuri.org/UserDelete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserList">
+      <soap12:operation soapAction="http://tempuri.org/UserList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserStudentList">
+      <soap12:operation soapAction="http://tempuri.org/UserStudentList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupGet">
+      <soap12:operation soapAction="http://tempuri.org/GroupGet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupAdd">
+      <soap12:operation soapAction="http://tempuri.org/GroupAdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupUpdate">
+      <soap12:operation soapAction="http://tempuri.org/GroupUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupDelete">
+      <soap12:operation soapAction="http://tempuri.org/GroupDelete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupList">
+      <soap12:operation soapAction="http://tempuri.org/GroupList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupListOfUser">
+      <soap12:operation soapAction="http://tempuri.org/GroupListOfUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupListOnlyOfUser">
+      <soap12:operation soapAction="http://tempuri.org/GroupListOnlyOfUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupOfEvent">
+      <soap12:operation soapAction="http://tempuri.org/GroupOfEvent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupChildOfGroup">
+      <soap12:operation soapAction="http://tempuri.org/GroupChildOfGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MasterGroupList">
+      <soap12:operation soapAction="http://tempuri.org/MasterGroupList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupChildOfGroupList">
+      <soap12:operation soapAction="http://tempuri.org/GroupChildOfGroupList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MasterGroupListOfUser">
+      <soap12:operation soapAction="http://tempuri.org/MasterGroupListOfUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserGroupGet">
+      <soap12:operation soapAction="http://tempuri.org/UserGroupGet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserGroupAdd">
+      <soap12:operation soapAction="http://tempuri.org/UserGroupAdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserGroupUpdate">
+      <soap12:operation soapAction="http://tempuri.org/UserGroupUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserGroupDelete">
+      <soap12:operation soapAction="http://tempuri.org/UserGroupDelete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserGroupList">
+      <soap12:operation soapAction="http://tempuri.org/UserGroupList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserGroupListOfUser">
+      <soap12:operation soapAction="http://tempuri.org/UserGroupListOfUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RoleGet">
+      <soap12:operation soapAction="http://tempuri.org/RoleGet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RoleAdd">
+      <soap12:operation soapAction="http://tempuri.org/RoleAdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RoleUpdate">
+      <soap12:operation soapAction="http://tempuri.org/RoleUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RoleDelete">
+      <soap12:operation soapAction="http://tempuri.org/RoleDelete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RoleList">
+      <soap12:operation soapAction="http://tempuri.org/RoleList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RoleListNoAdmin">
+      <soap12:operation soapAction="http://tempuri.org/RoleListNoAdmin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EventGet">
+      <soap12:operation soapAction="http://tempuri.org/EventGet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EventAdd">
+      <soap12:operation soapAction="http://tempuri.org/EventAdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EventUpdate">
+      <soap12:operation soapAction="http://tempuri.org/EventUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EventDelete">
+      <soap12:operation soapAction="http://tempuri.org/EventDelete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EventList">
+      <soap12:operation soapAction="http://tempuri.org/EventList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EventListOfGroup">
+      <soap12:operation soapAction="http://tempuri.org/EventListOfGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EventListOfGroupOnly">
+      <soap12:operation soapAction="http://tempuri.org/EventListOfGroupOnly" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EventListOfUser">
+      <soap12:operation soapAction="http://tempuri.org/EventListOfUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EventListOfWeek">
+      <soap12:operation soapAction="http://tempuri.org/EventListOfWeek" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EventListOfGroupByDates">
+      <soap12:operation soapAction="http://tempuri.org/EventListOfGroupByDates" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EventListOfGroupsByDates">
+      <soap12:operation soapAction="http://tempuri.org/EventListOfGroupsByDates" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EventListOfUserByDates">
+      <soap12:operation soapAction="http://tempuri.org/EventListOfUserByDates" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService">
+    <wsdl:port name="WebServiceSoap" binding="tns:WebServiceSoap">
+      <soap:address location="http://localhost:56654/WebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceSoap12" binding="tns:WebServiceSoap12">
+      <soap12:address location="http://localhost:56654/WebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
