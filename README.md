@@ -8,4 +8,3 @@ this is a presentation of a tree view that is inside the website to best present
 
 ![image](https://user-images.githubusercontent.com/70100622/178622589-596248c1-256e-4502-8e1f-7eafb3078d6c.png)
 
-this website was built using asp.net, c#, some javascript, side server asmx, aspx pages, sql
