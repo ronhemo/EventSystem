@@ -8,3 +8,7 @@ own group and also the events for 12th grade and school.
 (this picture is from an admin account that has access to all events and can see them.)
 
 ![image](https://user-images.githubusercontent.com/70100622/178855355-22749044-fa10-403f-b399-7def8fb6aa45.png)
+
+(this picture is from a user account and his relevant envents)
+
+![image](https://user-images.githubusercontent.com/70100622/180658511-90703897-d338-4fe0-8b66-036cdb9248fd.png)
